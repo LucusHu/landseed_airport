@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id='medical_notify_action' model='ir.actions.act_window'>
+        <field name="name">Medical Notify</field>
+        <field name="res_model">medical.notify</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Medical Notify" id="medical_notify_base_menu"/>
+    <menuitem name="Medical Notify" id="medical_notify_menu" parent="medical_notify_base_menu" action="medical_notify_action"/>
+
+    <!-- Form View -->
+    <record id="view_medical_notify_form" model="ir.ui.view">
+        <field name="name">medical_notify_form</field>
+        <field name="model">medical.notify</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="notify_date"/>
+                    <field name="notify_division"/>
+                    <field name="phone"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree(list) View -->
+    <record id="view_medical_notify_list" model="ir.ui.view">
+        <field name="name">medical_notify_list</field>
+        <field name="model">medical.notify</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="notify_date"/>
+                <field name="notify_division"/>
+                <field name="phone"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_medical_notify_search" model="ir.ui.view">
+        <field name="name">medical_notify_search</field>
+        <field name="model">medical.notify</field>
+        <field name="arch" type="xml">
+            <search string="Medical Notify Search">
+                <field name="phone" filter_domain="[('phone', 'like', self)]"/>
+<!--                <field name="nickname" filter_domain="[('nickname', 'like', self)]"/>-->
+
+<!--                <group string="Group By">-->
+<!--                    <filter name='gender' string='Gender' context="{'group_by':'gender'}"/>-->
+<!--                </group>-->
+            </search>
+        </field>
+    </record>
+</odoo>
